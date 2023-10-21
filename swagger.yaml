@@ -1,0 +1,93 @@
+swagger: '2.0'
+info:
+  title: SmartArtGuide API
+  version: '1.0'
+  description: APIs for the SmartArtGuide system
+
+paths:
+  /upload-image:
+    post:
+      summary: Upload an image for artwork recognition
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: image
+          in: formData
+          type: file
+          required: true
+      responses:
+        '200':
+          description: Artwork ID or No Result
+          schema:
+            type: object
+            properties:
+              artworkId:
+                type: string
+              status:
+                type: string
+
+  /recommendations/user/{userId}:
+    get:
+      summary: Get artwork recommendations based on user ID
+      parameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: List of recommended artwork IDs
+          schema:
+            type: array
+            items:
+              type: string
+
+  /similar-artworks/{artworkId}:
+    get:
+      summary: Get similar artworks based on an artwork ID
+      parameters:
+        - name: artworkId
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: List of similar artwork IDs
+          schema:
+            type: array
+            items:
+              type: string
+
+  /artwork-info/{artworkId}:
+    get:
+      summary: Get background information of an artwork based on its ID
+      parameters:
+        - name: artworkId
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Background information of the artwork
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+
+  /audio/{artworkId}:
+    get:
+      summary: Retrieve audio file for a specific artwork
+      parameters:
+        - name: artworkId
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Audio file for the artwork
+          schema:
+            type: file
+
