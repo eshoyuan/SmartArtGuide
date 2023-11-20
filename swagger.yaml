@@ -83,6 +83,8 @@ paths:
                 type: string
               description:
                 type: string
+              url:
+                type: string
 
   /audio/{artworkId}:
     get:
