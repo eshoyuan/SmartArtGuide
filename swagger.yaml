@@ -11,10 +11,15 @@ paths:
       consumes:
         - multipart/form-data
       parameters:
-        - name: image
-          in: formData
-          type: file
+        - name: imageData
+          in: body
           required: true
+          schema:
+            type: object
+            properties:
+              imageBase64:
+                type: string
+                description: Image data in Base64 encoding
       responses:
         '200':
           description: Artwork ID or No Result
