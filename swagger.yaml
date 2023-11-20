@@ -43,9 +43,10 @@ paths:
         '200':
           description: List of recommended artwork IDs
           schema:
-            type: array
-            items:
-              type: string
+            type: object
+            properties:
+              ids: 
+                type: string
 
   /similar-artworks/{artworkId}:
     get:
@@ -59,9 +60,10 @@ paths:
         '200':
           description: List of similar artwork IDs
           schema:
-            type: array
-            items:
-              type: string
+            type: object
+            properties:
+              ids: 
+                type: string
 
   /artwork-info/{artworkId}:
     get:
@@ -92,7 +94,10 @@ paths:
           required: true
       responses:
         '200':
-          description: Audio file for the artwork
+          description: Audio base64 for the artwork
           schema:
-            type: file
+            type: object
+            properties:
+              audio:
+                type: string
 
