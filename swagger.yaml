@@ -17,7 +17,7 @@ paths:
           schema:
             type: object
             properties:
-              imageBase64:
+              image:
                 type: string
                 description: Image data in Base64 encoding
       responses:
